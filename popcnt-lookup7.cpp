@@ -10,7 +10,7 @@ std::uint64_t popcnt_lookup7_8bit(const uint8_t* data, const size_t n) {
     uint64_t result = 0;
 
     for (size_t i=0; i < n; i++) {
-        result += bitcount4(data[i]);
+        result += bitcount7(data[i]);
     }
 
     return result;
