@@ -21,6 +21,10 @@
 
 #include "popcnt-cpu.cpp"
 
+#include "popcnt-lookup3.cpp"
+#include "popcnt-lookup4.cpp"
+#include "popcnt-lookup7.cpp"
+
 // --------------------------------------------------
 
 
@@ -117,6 +121,21 @@ int main(int argc, char* argv[]) {
         while (k-- > 0) {
             n += popcnt_cpu_64bit(data, size);
         }
+    } else if (name == "lookup-3") {
+
+        while (k-- > 0) {
+            n += popcnt_lookup3_8bit(data, size);
+        }
+    } else if (name == "lookup-4") {
+
+        while (k-- > 0) {
+            n += popcnt_lookup4_8bit(data, size);
+        }
+    } else if (name == "lookup-7") {
+
+        while (k-- > 0) {
+            n += popcnt_lookup7_8bit(data, size);
+        }
     } else {
         assert(false && "wrong function name handling");
     }
@@ -138,7 +157,10 @@ void print_help(const char* name) {
     std::puts("");
     std::puts("1. function - one of:");
     std::puts("   * sse-lookup              - SSSE3 variant using pshufb instruction");
-    std::puts("   * lookup-8                - lookup in std::uint8_t[256] LUT");
+    std::puts("   * lookup-3                - lookup in std::uint8_t [  8] LUT");
+    std::puts("   * lookup-4                - lookup in std::uint8_t [ 16] LUT");
+    std::puts("   * lookup-7                - lookup in std::uint8_t [128] LUT");
+    std::puts("   * lookup-8                - lookup in std::uint8_t [256] LUT");
     std::puts("   * lookup-64               - lookup in std::uint64_t[256] LUT");
     std::puts("   * bit-parallel            - naive bit parallel method");
     std::puts("   * bit-parallel-optimized  - a bit better bit parallel");
@@ -146,6 +168,7 @@ void print_help(const char* name) {
 #ifdef HAVE_POPCNT_INSTRUCTION
     std::puts("   * cpu                     - CPU instruction popcnt (64-bit variant)");
 #endif
+    std::puts("   * naive                   - naive software 8-bits");
     std::puts("2. size - size of buffer in 16-bytes chunks");
     std::puts("3. iteration_count - as the name states");
 }
@@ -153,7 +176,11 @@ void print_help(const char* name) {
 
 bool is_name_valid(const std::string& name) {
 
-    return (name == "lookup-8")
+    return 0
+        || (name == "lookup-3")
+        || (name == "lookup-4")
+        || (name == "lookup-7")
+        || (name == "lookup-8")
         || (name == "lookup-64")
         || (name == "bit-parallel")
         || (name == "bit-parallel-optimized")
