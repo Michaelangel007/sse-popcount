@@ -6,6 +6,15 @@ ALL=speed verify
 
 .PHONY: all
 
+# OSX 10.9: g++ is really clang/llvm, but we really do want g++
+# make -f Makefile gcc all
+gcc:
+	CC=/usr/local/bin/g++
+
+# make -f Makefile clang all
+clang:
+	CC=g++
+
 all: $(ALL)
 
 speed: $(DEPS) speed.cpp
