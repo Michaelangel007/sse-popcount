@@ -50,7 +50,7 @@ Results from core i5, program compiled by GCC 4.9.2::
     running lookup-8                      time = 0.668823 s
     running lookup-64                     time = 0.687057 s
 
-Results from i7
+Results from i7::
 
     Clang
     running cpu                           ...reference result = 3999936000, time =   0.055046 s
