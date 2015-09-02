@@ -49,3 +49,34 @@ Results from core i5, program compiled by GCC 4.9.2::
     running bit-parallel                  time = 0.683336 s
     running lookup-8                      time = 0.668823 s
     running lookup-64                     time = 0.687057 s
+
+Results from i7
+
+    Clang
+    running cpu                           ...reference result = 3999936000, time =   0.055046 s
+    running sse-lookup                    ...reference result = 3999936000, time =   0.098277 s
+    running sse-bit-parallel              ...reference result = 3999936000, time =   0.111080 s
+    running bit-parallel-optimized        ...reference result = 3999936000, time =   0.000261 s
+    running bit-parallel                  ...reference result = 3999936000, time =   0.000359 s
+    running lookup-8                      ...reference result = 3999936000, time =   0.362899 s
+    running lookup-64                     ...reference result = 3999936000, time =   0.326885 s
+    running lookup-3                      ...reference result = 3999936000, time =   1.408825 s
+    running lookup-4                      ...reference result = 3999936000, time =   0.801271 s
+    running lookup-7                      ...reference result = 3999936000, time =   0.662352 s
+
+    GCC
+    running cpu                           ...reference result = 3999936000, time =   0.053749 s
+    running sse-lookup                    ...reference result = 3999936000, time =   0.097490 s
+    running sse-bit-parallel              ...reference result = 3999936000, time =   0.107081 s
+    running bit-parallel-optimized        ...reference result = 3999936000, time =   0.000250 s
+    running bit-parallel                  ...reference result = 3999936000, time =   0.000371 s
+    running lookup-8                      ...reference result = 3999936000, time =   0.372160 s
+    running lookup-64                     ...reference result = 3999936000, time =   0.328134 s
+    running lookup-3                      ...reference result = 3999936000, time =   1.429192 s
+    running lookup-4                      ...reference result = 3999936000, time =   0.792507 s
+    running lookup-7                      ...reference result = 3999936000, time =   0.645930 s
+
+References:
+
+* http://wm.ite.pl/articles/sse-popcount.html
+
